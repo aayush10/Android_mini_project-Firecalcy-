@@ -1,0 +1,86 @@
+package com.ashwink.tictactoe;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+int count=0;
+    int ar[]={2,2,2,2,2,2,2,2,2};
+    boolean check=true;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+    public void drop(View view){
+      int tag=  Integer.parseInt(view.getTag().toString());
+        if(check==true){
+        if(ar[tag]==2){
+        ar[tag]=count;
+        if(count==0) {
+            ImageView im = (ImageView) view;
+            im.setTranslationY(-1000f);
+            im.setImageResource(R.drawable.yalo);
+            im.animate().translationYBy(1000f).setDuration(300);
+            count=1;
+        }
+        else{
+            ImageView im=(ImageView)view;
+            im.setTranslationY(-1000f);
+            im.setImageResource(R.drawable.gren);
+            im.animate().translationYBy(1000f).setDuration(300);
+            count=0;
+        }
+    }
+
+        if((ar[0]==0&&ar[0]==ar[1]&&ar[1]==ar[2] &&ar[1]!=2) || (ar[0]==0&&ar[0]==ar[3] && ar[3]==ar[6]&&ar[0]!=2) ||(ar[1]==0&&ar[1]==ar[4]&&ar[4]==ar[7]&&ar[1]!=2) ||(ar[2]==0&&ar[2]==ar[5] &&ar[5]==ar[8]&&ar[2]!=2)||(ar[3]==0&&ar[3]==ar[4]&&ar[4]==ar[5]&&ar[3]!=2) ||(ar[6]==0&&ar[6]==ar[7]&&ar[7]==ar[8]&&ar[6]!=2)||(ar[0]==0&&ar[0]==ar[4]&&ar[4]==ar[8]&&ar[0]!=2)||(ar[2]==0&&ar[2]==ar[4]&&ar[4]==ar[6]&&ar[2]!=2)){
+            Toast.makeText(this,"you win yellow",Toast.LENGTH_LONG).show();
+            LinearLayout lin=(LinearLayout)findViewById(R.id.layo);
+            lin.setVisibility(view.VISIBLE);
+            TextView txt=(TextView)findViewById(R.id.textView);
+            txt.setText("you win yellow");
+            check=false;
+
+        }
+        else if((ar[0]==1&&ar[0]==ar[1]&&ar[1]==ar[2] &&ar[1]!=2) || (ar[0]==1&&ar[0]==ar[3] && ar[3]==ar[6]&&ar[0]!=2) ||(ar[1]==1&&ar[1]==ar[4]&&ar[4]==ar[7]&&ar[1]!=2) ||(ar[2]==1&&ar[2]==ar[5] &&ar[5]==ar[8]&&ar[2]!=2)||(ar[3]==1&&ar[3]==ar[4]&&ar[4]==ar[5]&&ar[3]!=2) ||(ar[6]==1&&ar[6]==ar[7]&&ar[7]==ar[8]&&ar[6]!=2)||(ar[0]==1&&ar[0]==ar[4]&&ar[4]==ar[8]&&ar[0]!=2)||(ar[2]==1&&ar[2]==ar[4]&&ar[4]==ar[6]&&ar[2]!=2)){
+            Toast.makeText(this,"you win green",Toast.LENGTH_LONG).show();
+            LinearLayout lin=(LinearLayout)findViewById(R.id.layo);
+            lin.setVisibility(view.VISIBLE);
+            TextView txt=(TextView)findViewById(R.id.textView);
+            txt.setText("you win green");
+            check=false;
+        }
+}
+    }
+    public void play(View view){
+        for(int i=0; i<ar.length; i++){
+            ar[i]=2;
+        }
+        check=true;
+        ImageView im=(ImageView)findViewById(R.id.imageView);
+        im.setImageResource(R.drawable.button);
+        ImageView img1=(ImageView)findViewById(R.id.imageView2);
+        img1.setImageResource(R.drawable.button);
+        ImageView img2=(ImageView)findViewById(R.id.imageView3);
+        img2.setImageResource(R.drawable.button);
+        ImageView img3=(ImageView)findViewById(R.id.imageView4);
+        img3.setImageResource(R.drawable.button);
+        ImageView img4=(ImageView)findViewById(R.id.imageView5);
+        img4.setImageResource(R.drawable.button);
+        ImageView img5=(ImageView)findViewById(R.id.imageView6);
+        img5.setImageResource(R.drawable.button);
+        ImageView img6=(ImageView)findViewById(R.id.imageView7);
+        img6.setImageResource(R.drawable.button);
+        ImageView img7=(ImageView)findViewById(R.id.imageView8);
+        img7.setImageResource(R.drawable.button);
+        ImageView img8=(ImageView)findViewById(R.id.imageView9);
+        img8.setImageResource(R.drawable.button);
+        LinearLayout ln=(LinearLayout)findViewById(R.id.layo);
+        ln.setVisibility(view.INVISIBLE);
+    }
+}
